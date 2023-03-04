@@ -1,15 +1,16 @@
 #ifndef SERVER_H
 #define SERVER_H
-#include "client.h"
 #include <map>
 #include <memory>
 #include <random>
 #include <sstream>
 #include <string>
 #include <vector>
+#include "client.h"
 extern std::vector<std::string> pending_trxs;
 
-class Server {
+class Server
+{
 public:
   Server() = default;
   // create a new Client with the specified id.
@@ -21,8 +22,10 @@ public:
   std::shared_ptr<Client> get_client(std::string id) const;
   // return the wallet value of the client with username id.
   double get_wallet(std::string id) const;
-  static bool parse_trx(std::string trx, std::string &sender,
-                        std::string &receiver, double &value);
+  static bool parse_trx(std::string trx,
+                        std::string &sender,
+                        std::string &receiver,
+                        double &value);
   bool add_pending_trx(std::string trx, std::string signature);
   size_t mine();
   friend void show_wallets(const Server &server);
@@ -33,7 +36,8 @@ private:
   std::map<std::shared_ptr<Client>, double> clients;
 };
 
-inline void show_wallets(const Server &server) {
+inline void show_wallets(const Server &server)
+{
   std::cout << std::string(20, '*') << std::endl;
   for (const auto &client : server.clients)
     std::cout << client.first->get_id() << " : " << client.second << std::endl;

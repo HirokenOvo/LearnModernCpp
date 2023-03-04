@@ -4,7 +4,6 @@
 #include "client.h"
 #include "server.h"
 
-
 int main(int argc, char **argv)
 {
     if (false) // make false to run unit-tests
@@ -21,5 +20,5 @@ int main(int argc, char **argv)
         else
             std::cout << "FAILED" << std::endl;
     }
-    return 0;   
+    return 0;
 }
