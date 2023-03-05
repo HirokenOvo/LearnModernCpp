@@ -6,11 +6,9 @@
 #include <iostream>
 #include <ostream>
 #include <queue>
-class BST
-{
+class BST {
 public:
-  class Node
-  {
+  class Node {
   public:
     int value;
     Node *left, *right;
@@ -19,7 +17,7 @@ public:
     Node(const Node &node);
     Node(int value, Node *left, Node *right);
 
-    friend std::ostream &operator<<(std::ostream &out, const Node node);
+    friend std::ostream &operator<<(std::ostream &out, const Node &node);
     std::partial_ordering operator<=>(int x);
     bool operator==(int x);
   };
@@ -41,10 +39,9 @@ public:
   Node **find_parrent(int value);
   Node **find_successor(int value);
   bool delete_node(int value);
-  friend std::ostream &operator<<(std::ostream &out,  BST &bst);
+  friend std::ostream &operator<<(std::ostream &out, BST &bst);
 
 private:
   Node *root;
 };
-void check(BST::Node x);
 #endif // BST_H
